@@ -1,0 +1,112 @@
+version: '3'
+
+vars:
+  BINARY: tmp/gots
+  TEST_INPUT: testdata/all_types.go
+  TEST_OUTPUT: testdata/output/all_types.ts
+  TEST_CONFIG: testdata/gots.yaml
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
+  build:
+    desc: Build the CLI binary to tmp/
+    cmds:
+      - mkdir -p tmp
+      - go build -o {{.BINARY}} ./cmd/cli
+    sources:
+      - cmd/cli/*.go
+      - pkg/**/*.go
+      - go.mod
+    generates:
+      - "{{.BINARY}}"
+
+  test:
+    desc: Run all tests
+    cmds:
+      - go test ./... -v
+
+  test:short:
+    desc: Run all tests (short output)
+    cmds:
+      - go test ./...
+
+  test:parser:
+    desc: Run parser tests only
+    cmds:
+      - go test ./pkg/parser/ -v
+
+  test:generator:
+    desc: Run generator tests only
+    cmds:
+      - go test ./pkg/generator/ -v
+
+  test:cover:
+    desc: Run tests with coverage report
+    cmds:
+      - go test ./... -coverprofile=tmp/coverage.out
+      - go tool cover -func=tmp/coverage.out
+    deps: [build]
+
+  test:cover:html:
+    desc: Open coverage report in browser
+    cmds:
+      - go test ./... -coverprofile=tmp/coverage.out
+      - go tool cover -html=tmp/coverage.out
+
+  vet:
+    desc: Run go vet on all packages
+    cmds:
+      - go vet ./...
+
+  lint:
+    desc: Run go vet and build check
+    cmds:
+      - go vet ./...
+      - go build ./...
+
+  convert:
+    desc: Convert testdata/all_types.go to TypeScript (stdout)
+    deps: [build]
+    cmds:
+      - "{{.BINARY}} convert {{.TEST_INPUT}}"
+
+  convert:file:
+    desc: Convert testdata/all_types.go to testdata/output/all_types.ts
+    deps: [build]
+    cmds:
+      - "{{.BINARY}} convert {{.TEST_INPUT}} -o {{.TEST_OUTPUT}}"
+
+  convert:enum:
+    desc: Convert testdata/all_types.go with enum style (stdout)
+    deps: [build]
+    cmds:
+      - "{{.BINARY}} convert {{.TEST_INPUT}} -s enum"
+
+  convert:const-object:
+    desc: Convert testdata/all_types.go with const-object style (stdout)
+    deps: [build]
+    cmds:
+      - "{{.BINARY}} convert {{.TEST_INPUT}} -s const-object"
+
+  generate:
+    desc: Run generate with testdata/gots.yaml config
+    deps: [build]
+    cmds:
+      - "{{.BINARY}} generate -c {{.TEST_CONFIG}}"
+
+  ci:
+    desc: Run full CI pipeline (vet + test + build)
+    cmds:
+      - task: vet
+      - task: test:short
+      - task: build
+
+  clean:
+    desc: Remove build artifacts
+    cmds:
+      - rm -rf tmp/
+      - rm -f testdata/output/*.ts

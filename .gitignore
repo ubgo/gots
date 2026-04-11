@@ -1,0 +1,14 @@
+# Binaries
+gots
+*.exe
+tmp/
+.task/
+
+# Test output
+# testdata/output/
+
+# Claude Code
+.claude/
+
+# OS files
+.DS_Store
