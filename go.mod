@@ -1,4 +1,4 @@
-module github.com/khanakia/gots
+module github.com/ubgo/gots
 
 go 1.24.2
 

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/khanakia/gots/main/schema.json",
+  "$id": "https://raw.githubusercontent.com/ubgo/gots/main/schema.json",
   "title": "gots configuration",
   "description": "Configuration file for gots — Go to TypeScript code generator",
   "type": "object",

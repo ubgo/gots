@@ -15,9 +15,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/khanakia/gots/pkg/config"
-	"github.com/khanakia/gots/pkg/generator"
-	"github.com/khanakia/gots/pkg/parser"
+	"github.com/ubgo/gots/pkg/config"
+	"github.com/ubgo/gots/pkg/generator"
+	"github.com/ubgo/gots/pkg/parser"
 	"github.com/spf13/cobra"
 )
 

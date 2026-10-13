@@ -31,10 +31,10 @@ var initCmd = &cobra.Command{
 
 		// The template includes all config keys with defaults and commented examples.
 		// Users uncomment what they need rather than looking up docs.
-		defaultConfig := `# yaml-language-server: $schema=https://raw.githubusercontent.com/khanakia/gots/main/schema.json
+		defaultConfig := `# yaml-language-server: $schema=https://raw.githubusercontent.com/ubgo/gots/main/schema.json
 
 # gots configuration
-# Docs: https://github.com/khanakia/gots
+# Docs: https://github.com/ubgo/gots
 
 default_style: union          # union | enum | const-object
 emit_values_array: false

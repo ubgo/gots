@@ -53,7 +53,7 @@ This is a fundamental capability that code-as-config cannot match.
 
 package constants  // ← this file must live in the same package
 
-import "github.com/khanakia/gots/schema"
+import "github.com/ubgo/gots/schema"
 
 var _ = schema.Configure(
     schema.ForType(MessageRole(""),  // can only reference types in this package
@@ -172,7 +172,7 @@ overrides:
 Same YAML config, but publish a JSON Schema so editors provide autocompletion.
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/khanakia/gots/main/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ubgo/gots/main/schema.json
 
 default_style: union          # editor autocompletes: union | enum | const-object
 pointer_handling: optional    # editor autocompletes: optional | nullable | both
@@ -203,7 +203,7 @@ sources:
 2. Add the schema comment as the first line of your `gots.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/khanakia/gots/main/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ubgo/gots/main/schema.json
 ```
 
 Or use a local relative path if the remote URL is slow:
@@ -232,7 +232,7 @@ If you don't want the schema comment in every file, add this to your VS Code `se
 ```json
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/khanakia/gots/main/schema.json": "**/gots.yaml"
+    "https://raw.githubusercontent.com/ubgo/gots/main/schema.json": "**/gots.yaml"
   }
 }
 ```
@@ -306,7 +306,7 @@ Instead of a config file, use a Go file that imports a `gots/schema` package. Th
 
 package constants
 
-import "github.com/khanakia/gots/schema"
+import "github.com/ubgo/gots/schema"
 
 var _ = schema.Configure(
     schema.Output("./frontend/src/types/constants.ts"),
@@ -337,7 +337,7 @@ var _ = schema.Configure(
 
 package constants
 
-import "github.com/khanakia/gots/schema"
+import "github.com/ubgo/gots/schema"
 
 var _ = schema.Configure(
     // Referencing actual Go types — IDE rename propagates here
@@ -579,7 +579,7 @@ A dedicated Go package that registers types for conversion. Similar to how `data
 package gotsconfig
 
 import (
-    "github.com/khanakia/gots/schema"
+    "github.com/ubgo/gots/schema"
     "myapp/pkg/constants"
     "myapp/pkg/models"
 )

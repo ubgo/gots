@@ -40,6 +40,6 @@ changelog:
 
 release:
   github:
-    owner: khanakia
+    owner: ubgo
     name: gots
   name_template: "gots {{ .Version }}"

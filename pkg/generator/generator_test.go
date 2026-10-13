@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/khanakia/gots/pkg/config"
-	"github.com/khanakia/gots/pkg/parser"
+	"github.com/ubgo/gots/pkg/config"
+	"github.com/ubgo/gots/pkg/parser"
 )
 
 const testFile = "../../testdata/all_types.go"

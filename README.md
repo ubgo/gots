@@ -19,17 +19,17 @@ Go source files → [gots] → TypeScript files
 ### From source
 
 ```bash
-go install github.com/khanakia/gots/cmd/cli@latest
+go install github.com/ubgo/gots/cmd/cli@latest
 ```
 
 ### From release
 
-Download the binary for your platform from [GitHub Releases](https://github.com/khanakia/gots/releases).
+Download the binary for your platform from [GitHub Releases](https://github.com/ubgo/gots/releases).
 
 ### From source (local)
 
 ```bash
-git clone https://github.com/khanakia/gots.git
+git clone https://github.com/ubgo/gots.git
 cd gots
 go build -o gots ./cmd/cli
 ```
@@ -105,7 +105,7 @@ gots version
 ### Example
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/khanakia/gots/main/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ubgo/gots/main/schema.json
 
 default_style: union
 emit_values_array: false
@@ -204,7 +204,7 @@ Per-type override  →  Source-level default  →  Global default
 Add this as the first line of `gots.yaml`:
 
 ```yaml
-# yaml-language-server: $schema=https://raw.githubusercontent.com/khanakia/gots/main/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ubgo/gots/main/schema.json
 ```
 
 Or configure globally in VS Code `settings.json`:
@@ -212,7 +212,7 @@ Or configure globally in VS Code `settings.json`:
 ```json
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/khanakia/gots/main/schema.json": "**/gots.yaml"
+    "https://raw.githubusercontent.com/ubgo/gots/main/schema.json": "**/gots.yaml"
   }
 }
 ```

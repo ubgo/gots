@@ -50,8 +50,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/khanakia/gots/pkg/config"
-	"github.com/khanakia/gots/pkg/parser"
+	"github.com/ubgo/gots/pkg/config"
+	"github.com/ubgo/gots/pkg/parser"
 )
 
 // Generator produces TypeScript output from parsed Go declarations.
